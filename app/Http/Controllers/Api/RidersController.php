@@ -31,7 +31,7 @@ class RidersController extends Controller
     public function store(Request $request, Ride $ride)
     {
         $rider = $ride->riders()->create([
-            'user_id' => 2
+            'user_id' => $request -> user() -> id
         ]);
 
         return $rider;

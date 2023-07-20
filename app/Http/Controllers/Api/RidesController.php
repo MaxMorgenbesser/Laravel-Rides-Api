@@ -33,8 +33,7 @@ class RidesController extends Controller
                 'request_time' => 'required|date',
                 'dropoff_time' => 'required|date|after:request_time'
             ]),
-            'user_id' => 1
-
+            'user_id' => $request -> user() -> id
         ]);
 
         return $ride;
