@@ -12,10 +12,10 @@ class RideSeeder extends Seeder
      */
     public function run(): void
     {
-   
+
         $users = \App\Models\User::all();
 
-        for ($i = 0; $i<200; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             $user = $users->random();
             \App\Models\Ride::factory()->create([
                 'user_id' => $user->id,

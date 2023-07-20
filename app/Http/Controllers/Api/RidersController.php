@@ -14,10 +14,10 @@ class RidersController extends Controller
      */
 
 
-     public function __construct()
-     {
-         $this->middleware('auth:sanctum')->except(['index', 'show']);
-     }
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum')->except(['index', 'show']);
+    }
     public function index(Ride $ride)
     {
         $riders = $ride->riders()->latest()->get();
@@ -31,7 +31,7 @@ class RidersController extends Controller
     public function store(Request $request, Ride $ride)
     {
         $rider = $ride->riders()->create([
-            'user_id' => $request -> user() -> id
+            'user_id' => $request->user()->id
         ]);
 
         return $rider;

@@ -13,17 +13,12 @@ class RidesController extends Controller
     {
         $this->middleware('auth:sanctum')->except(['index', 'show']);
     }
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return \App\Models\Ride::all();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         $ride = \App\Models\Ride::create([
@@ -32,24 +27,17 @@ class RidesController extends Controller
                 'end_location' => 'required|string',
                 'request_time' => 'required|date',
                 'dropoff_time' => 'required|date|after:request_time'
+                
             ]),
-            'user_id' => $request -> user() -> id
+            'user_id' => $request->user()->id
         ]);
 
         return $ride;
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(\App\Models\Ride $ride)
     {
         return $ride;
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, \App\Models\Ride $ride)
     {
         $ride->update(
@@ -64,9 +52,6 @@ class RidesController extends Controller
         return $ride;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(\App\Models\Ride $Ride)
     {
         $Ride->delete();
