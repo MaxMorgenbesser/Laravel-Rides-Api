@@ -40,5 +40,4 @@ jobs:
 
        
       - name: Run Tests
-          run: php artisan migrate:fresh --seed
-        run: php artisan test --testsuite=Feature
+        run: php artisan migrate:fresh --seed && php artisan test --testsuite=Feature
