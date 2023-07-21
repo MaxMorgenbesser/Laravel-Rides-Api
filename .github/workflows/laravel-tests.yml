@@ -38,8 +38,7 @@ jobs:
       - name: Install dependencies
         run: composer install
 
-      - name: migrate database
-         run: php artisan migrate:fresh --seed
+       
       - name: Run Tests
-      
+          run: php artisan migrate:fresh --seed
         run: php artisan test --testsuite=Feature
