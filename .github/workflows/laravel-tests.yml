@@ -24,10 +24,5 @@ jobs:
 
 
       - name: Run Tests
-                env:
-        DB_CONNECTION: mysql
-        DB_DATABASE: pickup
-        DB_PORT: 3306
-        DB_USER: root
-        DB_PASSWORD: root
+      
         run: php artisan test --testsuite=Feature
