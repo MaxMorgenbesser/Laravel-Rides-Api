@@ -12,20 +12,20 @@ use Tests\TestCase;
 class ridesTest extends TestCase
 {
 
-    public function test_index(): void
+    public function test_index_rides(): void
     {
         $response = $this->get('/api/ride');
         $response->assertStatus(200);
     }
 
-    public function test_show(): void
+    public function test_show_rides(): void
     {
         $ride = Ride::all()->random();
         $response = $this->get('/api/ride/' . $ride->id);
         $response->assertStatus(200);
     }
 
-    public function test_store(): void
+    public function test_store_rides(): void
     {
         Sanctum::actingAs(User::factory()->create());
 
@@ -40,7 +40,7 @@ class ridesTest extends TestCase
         )->assertStatus(201);
     }
 
-    public function test_update()
+    public function test_update_rides()
     {
         Sanctum::actingAs(User::factory()->create());
 
@@ -54,15 +54,15 @@ class ridesTest extends TestCase
         ])->assertStatus(200);
     }
 
-    public function test_delete()
+    public function test_delete_rides()
     {
         Sanctum::actingAs(User::factory()->create());
 
         $ride = (Ride::factory()->create([
-        'user_id' => 1
-       ]));
+            'user_id' => 1
+        ]));
 
-       $this->delete('/api/ride/'. $ride -> id)->assertStatus(204);
+        $this->delete('/api/ride/' . $ride->id)->assertStatus(204);
     }
 
 }
