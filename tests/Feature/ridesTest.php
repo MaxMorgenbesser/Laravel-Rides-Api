@@ -54,11 +54,15 @@ class ridesTest extends TestCase
         ])->assertStatus(200);
     }
 
-    // public function test_delete()
-    // {
-    //    Sanctum::actingAs(Ride::factory()->create([
-    //     'user_id' => 1
-    //    ])->delete());
-    // }
+    public function test_delete()
+    {
+        Sanctum::actingAs(User::factory()->create());
+
+        $ride = (Ride::factory()->create([
+        'user_id' => 1
+       ]));
+
+       $this->delete('/api/ride/'. $ride -> id)->assertStatus(204);
+    }
 
 }
